@@ -16,7 +16,7 @@ class PageController extends Controller
 
         $movies = Movie::all(); // 'all()' = SELECT * FROM movies
 
-        dd($movies);
+        // dd($movies);
 
         // Passo alla Vista i risultato della Query
         $data = [

@@ -1,30 +1,35 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!-- Sto estendendo il layout creato in "app.blade.php" -->
+@extends('layouts.app');
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Sto creando il contenuto da mettere dentro il segnaposto 'content' ereditato da layout in App -->
+@section('content')
 
-    <title>Laravel</title>
+<div class="container text-center">
+    <h1>Movies</h1>
+</div>
 
-    <!-- Fonts -->
-    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<div class="container py-4">
+    <div class="row row-cols-5">
 
-    <!-- Styles -->
-    @vite('resources/js/app.js')
-
-</head>
-
-<body>
-
-    <main class>
-        <div class="container">
-
-            <h1>Benvenuto</h1>
-
+        @foreach ($movies as $movie)
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $movie->title }}</h5>
+                    <p class="card-text"> {{ $movie->original_title }} </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"> {{ $movie->nationality }} </li>
+                    <li class="list-group-item"> {{ $movie->date }} </li>
+                    <li class="list-group-item">{{ $movie->vote }}</li>
+                </ul>
+            </div>
         </div>
-    </main>
+        @endforeach
 
-</body>
+    </div>
 
-</html>
+</div>
+
+
+@endsection
